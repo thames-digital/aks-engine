@@ -455,7 +455,8 @@ $KubeletCommandLine
 function
 Get-DefaultGateway(`$CIDR)
 {
-    return `$CIDR.substring(0,`$CIDR.lastIndexOf(".")) + ".1"
+    `$lastOctet=`$CIDR.split("/")[0].split(".")[-1]
+    return `$CIDR.substring(0,`$CIDR.lastIndexOf(".")) + "." + `$lastOctet + 1
 }
 
 function
